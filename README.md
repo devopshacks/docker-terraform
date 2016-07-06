@@ -1,3 +1,3 @@
 # Docker image for Terraform
 
-[![Build Status](https://travis-ci.org/devopshacks/docker-terraform.svg?branch=master)](https://travis-ci.org/devopshacks/docker-terraform)
+[![Build Status](https://travis-ci.org/opsidian/docker-terraform.svg?branch=master)](https://travis-ci.org/opsidian/docker-terraform)
