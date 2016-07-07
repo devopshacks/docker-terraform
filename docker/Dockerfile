@@ -16,8 +16,15 @@ RUN \
     && XC_OS="linux" XC_ARCH="amd64" make bin \
     && mv /tmp/go/bin/terraform* /bin/ \
 
+    && echo "Create project directory" \
+    && mkdir -p /var/project \
+    && chown app:app /var/project \
+    && chmod 0770 /var/project \
+
     && echo "Clean up" \
     && apk del go git zip \
     && rm -rf /tmp/*
 
 COPY opsidian-release /etc/opsidian-release
+
+WORKDIR /var/project
