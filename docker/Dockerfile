@@ -5,7 +5,7 @@ ENV TERRAFORM_BUILD_TAG=v0.6.16
 RUN \
     echo "Install packages" \
     && apk add --no-cache \
-      go git zip \
+      go git zip ca-certificates \
 
     && echo "Install Terraform" \
     && mkdir /tmp/go \
@@ -16,8 +16,15 @@ RUN \
     && XC_OS="linux" XC_ARCH="amd64" make bin \
     && mv /tmp/go/bin/terraform* /bin/ \
 
+    && echo "Create project directory" \
+    && mkdir -p /var/project \
+    && chown app:app /var/project \
+    && chmod 0770 /var/project \
+
     && echo "Clean up" \
     && apk del go git zip \
     && rm -rf /tmp/*
 
 COPY opsidian-release /etc/opsidian-release
+
+WORKDIR /var/project
