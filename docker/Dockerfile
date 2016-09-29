@@ -5,7 +5,7 @@ ENV TERRAFORM_BUILD_TAG=v0.6.16
 RUN \
     echo "Install packages" \
     && apk add --no-cache \
-      go git zip ca-certificates \
+      go git zip \
 
     && echo "Install Terraform" \
     && mkdir /tmp/go \
